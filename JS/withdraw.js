@@ -5,11 +5,14 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
     //step 2:
     const currentBalance = document.getElementById('balance-total');
     const previousBalanceNum = parseFloat(currentBalance.innerText);
+    //step 7:
+    withdrawInput.value = "";
     //step 3:
-    if (withdrawInput.value == "") {
-        alert("Please Enter amount to withdraw");
+    if (isNaN(newWithdrawAmount)) {
+        alert("Please Enter valid amount to withdraw");
+        return;
     }
-    else if (newWithdrawAmount <= previousBalanceNum) {
+    if (newWithdrawAmount <= previousBalanceNum) {
         //step 4:
         currentBalance.innerText = previousBalanceNum - newWithdrawAmount;
         //step 5:
@@ -20,6 +23,4 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
         //step 6:
         alert('You Don\'t have sufficient balance');
     }
-    //step 7:
-    withdrawInput.value = "";
 })
